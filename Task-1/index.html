@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbrella Customizer(Task-1)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- class name start with um (project main object name) -->
+    <div class="um-container">
+      <!-- main title -->
+        <h1 class="um-main-header">Customize Your Umbrella</h1>
+        <div class="um-main-container">
+            <!-- image section -->
+            <div class="um-umbrella-wrapper">
+                <img src="assets/loader_icon.svg" alt="loading..." id="um-loader">
+                <img id="um-umbrella-img" class="um-umbrella" src="assets/Pink_umbrella.png" alt="Umbrella">
+                <img id="um-logo" class="um-logo" src="" alt="" style="display: none">
+            </div>
+            <!-- button section -->
+            <div class="um-umbrella-input-color">
+              <!-- upload button -->
+                <button id="um-upload-btn">
+                    <img src="assets/upload_icon.svg" alt="upload"> UPLOAD LOGO
+                </button>
+                <input type="file" id="um-upload" accept="image/*" hidden>
+                <div class="um-upload-instuction">
+                  <h4>Upload a logo for an instant preview</h4>
+                  <p>Supported formats: .jpg, .jpeg, .png</p>
+                  <p>Max file size: 5MB</p>
+                </div>
+                <!-- color picker -->
+                <div class="um-color-picker-container">
+                    <div class="um-color-options">
+                        <div class="um-color-button-container">
+                            <button class="um-color-button" data-color="Pink" onclick="umChangeColor('Pink')" style="background: pink"></button>
+                        </div>
+                        <div class="um-color-button-container">
+                            <button class="um-color-button" data-color="Blue" onclick="umChangeColor('Blue')" style="background: blue; color: white"></button>
+                        </div>          
+                        <div class="um-color-button-container">
+                            <button class="um-color-button" data-color="Yellow" onclick="umChangeColor('Yellow')" style="background: yellow"></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- download button -->
+                <button id="um-download-btn" style="display: none;">
+                    <img src="assets/upload_icon.svg" alt="download" style="transform: rotate(180deg);"> DOWNLOAD PREVIEW
+                </button>
+            </div>
+        </div>  
+    </div>
+
+    <script src="functions.js"></script>
+    <script src="elements.js"></script>
+  </body>
+</html>
