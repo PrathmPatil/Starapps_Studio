@@ -90,19 +90,14 @@ body{
     padding: 0px;
 }
 
-.um-color-options {
-    display: flex;
-    gap: 10px;
-}
-
-.um-color-options button {
+.um-color-button {
     padding: 16px;
     cursor: pointer;
     border: 2px solid white;
     border-radius: 10px;
 }
 
-.um-color-options button:hover {
+.um-color-button:hover {
     transform: scale(1.1);
 }
 

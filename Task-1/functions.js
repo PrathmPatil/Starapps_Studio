@@ -1,42 +1,37 @@
 
+const colorMap = {
+    Pink: 'assets/Pink_umbrella.png',
+    Blue: 'assets/Blue_umbrella.png',
+    Yellow: 'assets/Yellow_umbrella.png'
+};
+
 function showLoader() {
-    setTimeout(() => {
-        umLoader.style.display = 'block';
-        umUmbrellaImg.style.display = 'none';
-        umLogoImg.style.display = 'none';
-    }, 0);
+    umLoader.style.display = 'block';
+    umUmbrellaImg.style.display = 'none';
+    umLogoImg.style.display = 'none';
 }
 
 function hideLoader() {
     setTimeout(() => {
         umLoader.style.display = 'none';
         umUmbrellaImg.style.display = 'block';
-        if (umLogoImg.src) {
+        if (umLogoImg.src && umLogoImg.src !== window.location.href) {
             umLogoImg.style.display = 'block';
         }
-    }, 2000);
+    }, 1000);
 }
 
- function changeColor(color) {
-    showLoader(); 
-    const colorMap = {
-        yellow: 'rgba(255, 223, 0, 0.5)',
-        blue: 'rgba(0, 0, 255, 0.5)',
-        pink: 'rgba(255, 105, 180, 0.5)'
-    };
-
-    umLoader.style.backgroundColor = colorMap[color] || 'transparent';
-    umUmbrellaImg.src = `assets/${color}_umbrella.png`;
-
-    umUmbrellaImg.onload = () => {
-        hideLoader();
-    };
-    umUmbrellaImg.onerror = () => {
-        console.error("Error loading image:", umUmbrellaImg.src);
-        hideLoader(); 
-    };
+function changeColor(color) {
+    if (colorMap[color]) {
+        showLoader();
+        umUmbrellaImg.src = colorMap[color];
+        umUmbrellaImg.onload = hideLoader;
+        umUmbrellaImg.onerror = () => {
+            console.error("Error loading image:", umUmbrellaImg.src);
+            hideLoader();
+        };
+    }
 }
-
 
 function handleFileUpload(event) {
     const file = event.target.files[0];
@@ -53,6 +48,7 @@ function handleFileUpload(event) {
         const reader = new FileReader();
         reader.onload = function(e) {
             umLogoImg.src = e.target.result;
+            umLogoImg.style.display = 'block';
             umDownloadBtn.style.display = 'flex';
             hideLoader();
         };
